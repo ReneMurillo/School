@@ -15,7 +15,24 @@ namespace CoreSchool
 
             PrintSchoolCourses(engine.School);
 
-            Printer.Beeper(2000,500,3);
+            //Printer.Beeper(2000,500,3);
+
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.DrawLine(20);
+            Printer.WriteTitle("Polymorphism tests");
+
+            var studentTest = new Student { Name = "Claire Underwood" };
+            SchoolObjectBase obj = studentTest;
+            Printer.WriteTitle("Student");
+            WriteLine($"Student: {studentTest.Name}");
+            WriteLine($"Student: {studentTest.UniqueId}");
+            WriteLine($"Student: {studentTest.GetType()}");
+
+            Printer.WriteTitle("Object");
+            WriteLine($"Object: {obj.Name}");
+            WriteLine($"Object: {obj.UniqueId}");
+            WriteLine($"Object: {obj.GetType()}");
         }
 
         private static void PrintSchoolCourses(School school)
