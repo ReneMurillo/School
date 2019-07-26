@@ -3,16 +3,8 @@ using System.Collections.Generic;
 
 namespace CoreSchool.Entities
 {
-    public class School
+    public class School: SchoolObjectBase
     {
-        string name;
-        public string Name 
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string UniqueId {get; set;} = Guid.NewGuid().ToString();
 
         public int FundationYear { get; set;}
         public string Country { get; set; }
