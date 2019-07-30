@@ -11,5 +11,10 @@ namespace CoreSchool.Entities
         {
             UniqueId = Guid.NewGuid().ToString();
         }
+
+        public override string ToString() 
+        {
+            return $"{Name}, {UniqueId}";
+        }
     }
 }
