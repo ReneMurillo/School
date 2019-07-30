@@ -99,5 +99,27 @@ namespace CoreSchool
                 course.Students = GenerateStudentsRandom(randomQuantity);
             }
         }
+
+        public List<SchoolObjectBase> GetSchoolObjects ()
+        {
+            var objList = new List<SchoolObjectBase>();
+
+            objList.Add(School);
+            objList.AddRange(School.Courses);
+
+            foreach(var course in School.Courses)
+            {
+                objList.AddRange(course.Subjects);
+                objList.AddRange(course.Students);
+
+                foreach(var student in course.Students)
+                {
+                    objList.AddRange(student.Evaluations);
+                }
+            }
+            
+
+            return objList;
+        }
     }
 }
