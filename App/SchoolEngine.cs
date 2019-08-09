@@ -40,7 +40,7 @@ namespace CoreSchool
             return studentsList.OrderBy( al => al.UniqueId).Take(quantity).ToList();
         }
 
-        public List<SchoolObjectBase> GetSchoolObjects (
+        public IReadOnlyList<SchoolObjectBase> GetSchoolObjects (
             bool bringEvaluations = true,
             bool bringStudents = true,
             bool bringSubjects = true,
@@ -50,7 +50,7 @@ namespace CoreSchool
             return GetSchoolObjects(out int dummy, out dummy, out dummy, out dummy);
         }
 
-        public List<SchoolObjectBase> GetSchoolObjects (out int evaluationsQuantity,
+        public IReadOnlyList<SchoolObjectBase> GetSchoolObjects (out int evaluationsQuantity,
             bool bringEvaluations = true,
             bool bringStudents = true,
             bool bringSubjects = true,
@@ -60,7 +60,7 @@ namespace CoreSchool
             return GetSchoolObjects(out evaluationsQuantity, out int dummy, out dummy, out dummy);
         }
 
-        public List<SchoolObjectBase> GetSchoolObjects (out int evaluationsQuantity, out int coursesQuantity,
+        public IReadOnlyList<SchoolObjectBase> GetSchoolObjects (out int evaluationsQuantity, out int coursesQuantity,
             bool bringEvaluations = true,
             bool bringStudents = true,
             bool bringSubjects = true,
@@ -70,7 +70,7 @@ namespace CoreSchool
             return GetSchoolObjects(out evaluationsQuantity, out coursesQuantity, out int dummy, out dummy);
         }
 
-        public List<SchoolObjectBase> GetSchoolObjects (out int evaluationsQuantity, out int coursesQuantity,
+        public IReadOnlyList<SchoolObjectBase> GetSchoolObjects (out int evaluationsQuantity, out int coursesQuantity,
             out int subjectsQuantity,
             bool bringEvaluations = true,
             bool bringStudents = true,
@@ -81,7 +81,7 @@ namespace CoreSchool
             return GetSchoolObjects(out evaluationsQuantity, out coursesQuantity, out subjectsQuantity, out int dummy);
         }
 
-        public List<SchoolObjectBase> GetSchoolObjects (
+        public IReadOnlyList<SchoolObjectBase> GetSchoolObjects (
             out int evaluationsQuantity,
             out int coursesQuantity,
             out int subjectsQuantity,
@@ -125,7 +125,7 @@ namespace CoreSchool
                 }
                 
             }
-            return objList;
+            return objList.AsReadOnly();
         }
 
         public List<SchoolObjectBase> GetSchoolObjects ()
