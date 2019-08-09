@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreSchool.Entities;
 using CoreSchool.Util;
 using static System.Console;
@@ -21,8 +22,8 @@ namespace CoreSchool
             Printer.DrawLine(20);
             Printer.DrawLine(20);
 
-            var objectList = engine.GetSchoolObjects();
-            
+            var objectList = engine.GetSchoolObjects(false,false,false,false);
+
         }
 
         private static void PrintSchoolCourses(School school)
