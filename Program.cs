@@ -16,19 +16,24 @@ namespace CoreSchool
 
             PrintSchoolCourses(engine.School);
 
-            //Printer.Beeper(2000,500,3);
+            Dictionary<int, string> dictionary = new Dictionary<int, string>();
 
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
+            dictionary.Add(10, "JuanK");
+            dictionary.Add(23, "Lorem ipsum");
 
-            var objectList = engine.GetSchoolObjects(
-            out int evaluationsQuantity,
-            out int coursesQuantity,
-            out int subjectsQuantity,
-            out int studentsQuantity
-            );
+            foreach (var keyValPair in dictionary)
+            {
+                WriteLine($"Key: {keyValPair.Key}, Value: {keyValPair.Value}");
+            }
 
+            Printer.WriteTitle("Dictionary access");
+            WriteLine(dictionary[23]);
+
+            Printer.WriteTitle("Another Dictionary");
+            var dict = new Dictionary<string, string>();
+            dict["moon"] = "Celestial body that revolves around the earth";
+
+            WriteLine(dict["moon"]);
         }
 
         private static void PrintSchoolCourses(School school)

@@ -21,10 +21,10 @@ namespace CoreSchool
             
             UploadCourses();
             UploadSubjects();
-            
             UploadEvaluations();
-            
         }
+
+       
 
          private List<Student> GenerateStudentsRandom(int quantity)
         {
