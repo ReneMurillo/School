@@ -22,7 +22,12 @@ namespace CoreSchool
             Printer.DrawLine(20);
             Printer.DrawLine(20);
 
-            var objectList = engine.GetSchoolObjects(false,false,false,false);
+            var objectList = engine.GetSchoolObjects(
+            out int evaluationsQuantity,
+            out int coursesQuantity,
+            out int subjectsQuantity,
+            out int studentsQuantity
+            );
 
         }
 

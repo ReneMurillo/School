@@ -66,7 +66,7 @@ namespace CoreSchool
             {
                 subjectsQuantity += course.Subjects.Count;
                 studentsQuantity += course.Students.Count;
-                
+
                 if(bringSubjects)
                     objList.AddRange(course.Subjects);
 
@@ -84,7 +84,7 @@ namespace CoreSchool
                 }
                 
             }
-            return (objList, evaluationsQuantity);
+            return objList;
         }
 
         public List<SchoolObjectBase> GetSchoolObjects ()
