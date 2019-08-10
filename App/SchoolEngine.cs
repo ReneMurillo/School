@@ -24,13 +24,30 @@ namespace CoreSchool
             UploadEvaluations();
         }
 
-        public void PrintDictionary(Dictionary<DictionaryKey, IEnumerable<SchoolObjectBase>> dictionary)
+        public void PrintDictionary(Dictionary<DictionaryKey, IEnumerable<SchoolObjectBase>> dictionary,
+        bool printEvaluations = false
+        )
         {
             foreach (var obj in dictionary)
             {
                 foreach (var value in obj.Value)
                 {
-                    Console.WriteLine(value);
+                    if(value is Evaluations)
+                    {
+                        if(printEvaluations)
+                            Console.WriteLine(value);
+                    }
+                    else if(value is School)
+                    {
+                        Console.WriteLine("School: " + value);
+                    }
+                    else if(value is Student)
+                    {
+                        Console.WriteLine("Nombre: " + value.Name);
+                    }
+                    else
+                        Console.WriteLine(value);
+                        
                 }
             }
         }
