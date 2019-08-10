@@ -24,6 +24,17 @@ namespace CoreSchool
             UploadEvaluations();
         }
 
+        public void PrintDictionary(Dictionary<DictionaryKey, IEnumerable<SchoolObjectBase>> dictionary)
+        {
+            foreach (var obj in dictionary)
+            {
+                foreach (var value in obj.Value)
+                {
+                    Console.WriteLine(value);
+                }
+            }
+        }
+
         public Dictionary<DictionaryKey, IEnumerable<SchoolObjectBase>> GetObjectDictionary()
         {
             var dictionary = new Dictionary<DictionaryKey, IEnumerable<SchoolObjectBase>>();
@@ -31,6 +42,24 @@ namespace CoreSchool
             dictionary.Add(DictionaryKey.School, new [] {School});
             dictionary.Add(DictionaryKey.Course, School.Courses.Cast<SchoolObjectBase>());
 
+            var tmpSubjects = new List<Subject>();
+            var tmpStudents = new List<Student>();
+            var tmpEvaluations = new List<Evaluations>();
+            foreach (var course in School.Courses)
+            {
+                tmpSubjects.AddRange(course.Subjects);
+                tmpStudents.AddRange(course.Students);
+                
+                foreach (var student in course.Students)
+                {
+                    tmpEvaluations.AddRange(student.Evaluations);
+                }
+
+                
+            }
+            dictionary.Add(DictionaryKey.Subject, tmpSubjects.Cast<SchoolObjectBase>());
+            dictionary.Add(DictionaryKey.Student, tmpStudents.Cast<SchoolObjectBase>());
+            dictionary.Add(DictionaryKey.Evaluation, tmpEvaluations.Cast<SchoolObjectBase>());
             return dictionary;
         }
 
