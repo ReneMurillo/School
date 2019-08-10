@@ -26,14 +26,7 @@ namespace CoreSchool
                 WriteLine($"Key: {keyValPair.Key}, Value: {keyValPair.Value}");
             }
 
-            Printer.WriteTitle("Dictionary access");
-            WriteLine(dictionary[23]);
-
-            Printer.WriteTitle("Another Dictionary");
-            var dict = new Dictionary<string, string>();
-            dict["moon"] = "Celestial body that revolves around the earth";
-
-            WriteLine(dict["moon"]);
+            
         }
 
         private static void PrintSchoolCourses(School school)

@@ -24,7 +24,15 @@ namespace CoreSchool
             UploadEvaluations();
         }
 
-       
+        public Dictionary<string, IEnumerable<SchoolObjectBase>> GetObjectDictionary()
+        {
+            var dictionary = new Dictionary<string, IEnumerable<SchoolObjectBase>>();
+
+            dictionary.Add("School", new [] {School});
+            dictionary.Add("Courses", School.Courses.Cast<SchoolObjectBase>());
+
+            return dictionary;
+        }
 
          private List<Student> GenerateStudentsRandom(int quantity)
         {
