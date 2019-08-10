@@ -14,7 +14,7 @@ namespace CoreSchool
             var engine = new SchoolEngine();
             engine.Initialize(); 
 
-            PrintSchoolCourses(engine.School);
+            //PrintSchoolCourses(engine.School);
 
             Dictionary<int, string> dictionary = new Dictionary<int, string>();
 
@@ -27,7 +27,7 @@ namespace CoreSchool
             }
 
             var dictmp = engine.GetObjectDictionary();
-            engine.PrintDictionary(dictmp);
+            engine.PrintDictionary(dictmp, true);
         }
 
         private static void PrintSchoolCourses(School school)

@@ -32,22 +32,30 @@ namespace CoreSchool
             {
                 foreach (var value in obj.Value)
                 {
-                    if(value is Evaluations)
+                    switch (obj.Key)
                     {
-                        if(printEvaluations)
+                        case DictionaryKey.Evaluation:
+                            if(printEvaluations)
+                                Console.WriteLine(value);
+                        break;
+                        case DictionaryKey.School:
+                            Console.WriteLine("School: " + value);
+                        break;
+                        case DictionaryKey.Student:
+                            Console.WriteLine("Nombre: " + value.Name);
+                        break;
+                        case DictionaryKey.Course:
+                            var tmpcourse = value as Course;
+                            if(tmpcourse != null)
+                            {
+                                int count = tmpcourse.Students.Count;
+                                Console.WriteLine($"Course: {value.Name} Students Quantity: {count}");
+                            }
+                        break;
+                        default:
                             Console.WriteLine(value);
-                    }
-                    else if(value is School)
-                    {
-                        Console.WriteLine("School: " + value);
-                    }
-                    else if(value is Student)
-                    {
-                        Console.WriteLine("Nombre: " + value.Name);
-                    }
-                    else
-                        Console.WriteLine(value);
-                        
+                        break;
+                    }   
                 }
             }
         }
@@ -239,7 +247,7 @@ namespace CoreSchool
                             {
                                 Subject = subject,
                                 Name = $"{subject.Name} Ev# {i + 1}",
-                                Score = (float)(5 * rnd.NextDouble()),
+                                Score = MathF.Round((float)(5 * rnd.NextDouble()), 2),
                                 Student = student
                             };
                             student.Evaluations.Add(ev);
