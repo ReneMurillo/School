@@ -233,21 +233,20 @@ namespace CoreSchool
 
         private void UploadEvaluations()
         {
+            var rnd = new Random();
             foreach (var course in School.Courses)
             {
                 foreach (var subject in course.Subjects)
                 {
                     foreach (var student in course.Students)
                     {
-                        var rnd = new Random(System.Environment.TickCount);
-
                         for (int i = 0; i < 5; i++)
                         {
                             var ev = new Evaluations
                             {
                                 Subject = subject,
                                 Name = $"{subject.Name} Ev# {i + 1}",
-                                Score = MathF.Round((float)(5 * rnd.NextDouble()), 2),
+                                Score = MathF.Round(5 * (float)rnd.NextDouble(), 2),
                                 Student = student
                             };
                             student.Evaluations.Add(ev);

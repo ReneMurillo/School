@@ -11,6 +11,7 @@ namespace CoreSchool
     {
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.ProcessExit += EventAction;
             var engine = new SchoolEngine();
             engine.Initialize(); 
 
@@ -28,6 +29,13 @@ namespace CoreSchool
 
             var dictmp = engine.GetObjectDictionary();
             engine.PrintDictionary(dictmp, true);
+        }
+
+        private static void EventAction(object sender, EventArgs e)
+        {
+            Printer.WriteTitle("Comming out");
+            Printer.Beeper(3000,1000,3);
+            Printer.WriteTitle("It left");
         }
 
         private static void PrintSchoolCourses(School school)
