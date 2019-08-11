@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreSchool.Entities;
 
-namespace CoreSchool
+namespace CoreSchool.App
 {
     public sealed class SchoolEngine
     {

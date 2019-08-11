@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CoreSchool.App;
 using CoreSchool.Entities;
 using CoreSchool.Util;
 using static System.Console;
@@ -15,20 +16,12 @@ namespace CoreSchool
             var engine = new SchoolEngine();
             engine.Initialize(); 
 
-            //PrintSchoolCourses(engine.School);
+            Printer.WriteTitle("Welcome to the School");
 
-            Dictionary<int, string> dictionary = new Dictionary<int, string>();
-
-            dictionary.Add(10, "JuanK");
-            dictionary.Add(23, "Lorem ipsum");
-
-            foreach (var keyValPair in dictionary)
-            {
-                WriteLine($"Key: {keyValPair.Key}, Value: {keyValPair.Value}");
-            }
-
-            var dictmp = engine.GetObjectDictionary();
-            engine.PrintDictionary(dictmp, true);
+            var reporter = new Reporter(engine.GetObjectDictionary());
+            var evaList = reporter.GetEvaluationsList();
+            var subjList = reporter.GetSubjectsList();
+            var evalXSubj = reporter.GetEvaluationsXSubjectDictionary();
         }
 
         private static void EventAction(object sender, EventArgs e)
