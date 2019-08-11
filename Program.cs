@@ -22,6 +22,7 @@ namespace CoreSchool
             var evaList = reporter.GetEvaluationsList();
             var subjList = reporter.GetSubjectsList();
             var evalXSubj = reporter.GetEvaluationsXSubjectDictionary();
+            var AvgSubjectList = reporter.GetAvgStudentXSubject();
         }
 
         private static void EventAction(object sender, EventArgs e)

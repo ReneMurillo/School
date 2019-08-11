@@ -55,5 +55,26 @@ namespace CoreSchool.App
 
             return rtaDictionary;
         }
+
+        public Dictionary<string, IEnumerable<Object>> GetAvgStudentXSubject()
+        {
+            var rta = new Dictionary<string, IEnumerable<Object>>();
+            var evaXSubDict = GetEvaluationsXSubjectDictionary();
+
+            foreach (var subjEva in evaXSubDict)
+            {
+                var averageStudent = from eval in subjEva.Value
+                group eval by new { eval.Student.UniqueId, eval.Student.Name }
+                into EvalStudentGroup
+                            select new AverageStudent
+                            {
+                                studentId = EvalStudentGroup.Key.UniqueId,
+                                studentName = EvalStudentGroup.Key.Name,
+                                average = EvalStudentGroup.Average( eval => eval.Score)
+                            };
+                rta.Add(subjEva.Key, averageStudent);
+            }
+            return rta;
+        }
     }
 }
