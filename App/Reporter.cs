@@ -87,8 +87,10 @@ namespace CoreSchool.App
                 var average = (from av in item.Value
                                 orderby av.average descending
                                 select new {
-                                    
+                                    Student = av.studentName,
+                                    Average = av.average
                                 }).Take(quantity);
+                rta.Add(item.Key, average);
             }
             
             return rta;
