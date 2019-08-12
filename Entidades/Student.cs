@@ -5,7 +5,7 @@ namespace CoreSchool.Entities
 {  
     public class Student: SchoolObjectBase
     {
-        public List<Evaluations> Evaluations {get; set;} = new List<Evaluations>();
+        public List<Evaluation> Evaluations {get; set;} = new List<Evaluation>();
 
     }
 }

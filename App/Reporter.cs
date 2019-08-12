@@ -17,13 +17,13 @@ namespace CoreSchool.App
             _dictionary = dictionary;
         }
 
-        public IEnumerable<Evaluations> GetEvaluationsList()
+        public IEnumerable<Evaluation> GetEvaluationsList()
         {
             if(_dictionary.TryGetValue(DictionaryKey.Evaluation, out IEnumerable<SchoolObjectBase> list))
             {
-                return list.Cast<Evaluations>();
+                return list.Cast<Evaluation>();
             }else
-                return new List<Evaluations>();
+                return new List<Evaluation>();
         }
 
         public IEnumerable<string> GetSubjectsList()
@@ -31,7 +31,7 @@ namespace CoreSchool.App
             return GetSubjectsList(out var dummy);
         }
 
-        public IEnumerable<string> GetSubjectsList(out IEnumerable<Evaluations> evaluationsList)
+        public IEnumerable<string> GetSubjectsList(out IEnumerable<Evaluation> evaluationsList)
         {
             evaluationsList = GetEvaluationsList();
 
@@ -39,9 +39,9 @@ namespace CoreSchool.App
                     select ev.Subject.Name).Distinct();
         }
 
-        public Dictionary<string, IEnumerable<Evaluations>> GetEvaluationsXSubjectDictionary()
+        public Dictionary<string, IEnumerable<Evaluation>> GetEvaluationsXSubjectDictionary()
         {
-            Dictionary<string, IEnumerable<Evaluations>> rtaDictionary = new Dictionary<string, IEnumerable<Evaluations>>();
+            Dictionary<string, IEnumerable<Evaluation>> rtaDictionary = new Dictionary<string, IEnumerable<Evaluation>>();
 
             var SubjList = GetSubjectsList(out var EvalList);
 
@@ -56,9 +56,9 @@ namespace CoreSchool.App
             return rtaDictionary;
         }
 
-        public Dictionary<string, IEnumerable<Object>> GetAvgStudentXSubject()
+        public Dictionary<string, IEnumerable<AverageStudent>> GetAvgStudentXSubject()
         {
-            var rta = new Dictionary<string, IEnumerable<Object>>();
+            var rta = new Dictionary<string, IEnumerable<AverageStudent>>();
             var evaXSubDict = GetEvaluationsXSubjectDictionary();
 
             foreach (var subjEva in evaXSubDict)
@@ -74,6 +74,23 @@ namespace CoreSchool.App
                             };
                 rta.Add(subjEva.Key, averageStudent);
             }
+            return rta;
+        }
+
+        public Dictionary<string, IEnumerable<Object>> GetBestAverageXSubject(int quantity)
+        {
+            var rta = new Dictionary<string, IEnumerable<Object>>();
+
+            var promStudent = GetAvgStudentXSubject();
+            foreach (var item in promStudent)
+            {
+                var average = (from av in item.Value
+                                orderby av.average descending
+                                select new {
+                                    
+                                }).Take(quantity);
+            }
+            
             return rta;
         }
     }

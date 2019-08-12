@@ -69,7 +69,7 @@ namespace CoreSchool.App
 
             var tmpSubjects = new List<Subject>();
             var tmpStudents = new List<Student>();
-            var tmpEvaluations = new List<Evaluations>();
+            var tmpEvaluations = new List<Evaluation>();
             foreach (var course in School.Courses)
             {
                 tmpSubjects.AddRange(course.Subjects);
@@ -242,7 +242,7 @@ namespace CoreSchool.App
                     {
                         for (int i = 0; i < 5; i++)
                         {
-                            var ev = new Evaluations
+                            var ev = new Evaluation
                             {
                                 Subject = subject,
                                 Name = $"{subject.Name} Ev# {i + 1}",

@@ -2,7 +2,7 @@ using System;
 
 namespace CoreSchool.Entities
 {  
-    public class Evaluations: SchoolObjectBase
+    public class Evaluation: SchoolObjectBase
     {
         public Student Student { get; set; }
         public Subject Subject { get; set; }

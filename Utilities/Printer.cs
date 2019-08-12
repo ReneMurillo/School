@@ -9,6 +9,16 @@ namespace CoreSchool.Util
             WriteLine("".PadLeft(size, '='));
         }
 
+        public static void PressEnter()
+        {
+            WriteLine("Press ENTER to continue");
+        }
+
+        public static void ExitingProgram()
+        {
+            WriteLine("Exiting the program");
+        }
+
         public static void WriteTitle(string title)
         {
             var size = title.Length + 4;
